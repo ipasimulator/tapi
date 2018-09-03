@@ -22,7 +22,12 @@
 #define TAPI_NAMESPACE_V1_BEGIN namespace tapi { inline namespace v1 {
 #define TAPI_NAMESPACE_V1_END } }
 
+// [port] CHANGED: Porting `visibility("default")` to Windows.
+#if defined(TAPI_PORT)
+#define TAPI_PUBLIC
+#else
 #define TAPI_PUBLIC __attribute__((visibility ("default")))
+#endif
 
 #endif // TAPI_DEFINES_H
 

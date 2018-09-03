@@ -17,7 +17,15 @@
 
 #include <string>
 #include <tapi/Defines.h>
+// [port] CHANGED: `Version.inc` was built by CMake, which we don't use.
+#if !defined(TAPI_PORT)
 #include <tapi/Version.inc>
+#else
+#define TAPI_VERSION "2.0.0"
+#define TAPI_VERSION_MAJOR 2U
+#define TAPI_VERSION_MINOR 0U
+#define TAPI_VERSION_PATCH 0U
+#endif
 
 ///
 /// \defgroup TAPI_VERSION Version methods

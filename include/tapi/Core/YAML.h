@@ -40,7 +40,8 @@ template <> struct ScalarTraits<FlowStringRef> {
   static StringRef input(StringRef value, void *ctx, FlowStringRef &out) {
     return Impl::input(value, ctx, out.value);
   }
-  static bool mustQuote(StringRef name) { return Impl::mustQuote(name); }
+  // [port] CHANGED: `bool` -> `QuotingType`. LLVM API probably evolved.
+  static QuotingType mustQuote(StringRef name) { return Impl::mustQuote(name); }
 };
 
 using tapi::ObjCConstraint;
