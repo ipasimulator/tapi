@@ -50,7 +50,8 @@ template <> struct ScalarTraits<Macro> {
     return {"invalid macro"};
   }
 
-  static bool mustQuote(StringRef /*unused*/) { return false; }
+  // [port] CHANGED: See [must-quote].
+  static QuotingType mustQuote(StringRef /*unused*/) { return QuotingType::None; }
 };
 
 template <> struct ScalarEnumerationTraits<clang::InputKind::Language> {

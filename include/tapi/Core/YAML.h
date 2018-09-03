@@ -40,7 +40,7 @@ template <> struct ScalarTraits<FlowStringRef> {
   static StringRef input(StringRef value, void *ctx, FlowStringRef &out) {
     return Impl::input(value, ctx, out.value);
   }
-  // [port] CHANGED: `bool` -> `QuotingType`. LLVM API probably evolved.
+  // [port] CHANGED: See [must-quote].
   static QuotingType mustQuote(StringRef name) { return Impl::mustQuote(name); }
 };
 
@@ -93,7 +93,8 @@ template <> struct ScalarTraits<Architecture> {
     return {};
   }
 
-  static bool mustQuote(StringRef) { return false; }
+  // [port] CHANGED: See [must-quote].
+  static QuotingType mustQuote(StringRef) { return QuotingType::None; }
 };
 
 using TAPI_INTERNAL::PackedVersion;
@@ -108,7 +109,8 @@ template <> struct ScalarTraits<PackedVersion> {
     return {};
   }
 
-  static bool mustQuote(StringRef) { return false; }
+  // [port] CHANGED: See [must-quote].
+  static QuotingType mustQuote(StringRef) { return QuotingType::None; }
 };
 
 template <> struct ScalarTraits<SwiftVersion> {
@@ -148,7 +150,8 @@ template <> struct ScalarTraits<SwiftVersion> {
     return StringRef();
   }
 
-  static bool mustQuote(StringRef) { return false; }
+  // [port] CHANGED: See [must-quote].
+  static QuotingType mustQuote(StringRef) { return QuotingType::None; }
 };
 
 using TAPI_INTERNAL::AvailabilityInfo;
@@ -186,7 +189,8 @@ template <> struct ScalarTraits<AvailabilityInfo> {
     return StringRef();
   }
 
-  static bool mustQuote(StringRef) { return false; }
+  // [port] CHANGED: See [must-quote].
+  static QuotingType mustQuote(StringRef) { return QuotingType::None; }
 };
 
 template <> struct ScalarTraits<UUID> {
@@ -205,7 +209,8 @@ template <> struct ScalarTraits<UUID> {
     return {};
   }
 
-  static bool mustQuote(StringRef) { return true; }
+  // [port] CHANGED: See [must-quote].
+  static QuotingType mustQuote(StringRef) { return QuotingType::Double; }
 };
 
 } // end namespace yaml.
