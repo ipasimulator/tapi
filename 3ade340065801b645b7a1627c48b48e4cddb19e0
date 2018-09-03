@@ -1,0 +1,12 @@
+[ver:1,total:900]
+include/tapi/Core/Architecture.def:187,1535994000:187,r
+.gitignore:180,1535990400:180,r
+include/tapi/Version.h:110,1535994000:110,m
+include/tapi/Defines.h:85,1535994000:85,m
+include/tapi/Core/YAML.h:80,1535994000:80,m
+include/tapi/Core/ArchitectureConfig.h:70,1535994000:70,m
+CMakeLists.txt:60,1535994000:60,r
+include/tapi/Core/ArchitectureSet.h:53,1535994000:53,r
+include/tapi/Version.inc.in:30,1535994000:30,r
+lib/Config/CMakeLists.txt:30,1535994000:30,r
+include/tapi/LinkerInterfaceFile.h:15,1535994000:15,r
