@@ -1,0 +1,14 @@
+[ver:1,total:1320]
+lib/Core/TextAPI_v1.cpp:540,1536012000:540,m
+lib/Core/MachODylibReader.cpp:170,1536012000:170,r
+lib/Core/TextStub_v2.cpp:128,1536012000:128,m
+lib/Core/ExtendedInterfaceFile.cpp:120,1536012000:120,r
+lib/Core/TextStub_v1.cpp:112,1536012000:112,m
+lib/Core/InterfaceFile.cpp:60,1536012000:60,r
+lib/Driver/DriverOptions.cpp:30,1536012000:30,r
+lib/Core/ArchitectureSet.cpp:30,1536012000:30,r
+lib/Core/Utils.cpp:30,1536012000:30,r
+lib/Core/Path.cpp:30,1536012000:30,r
+lib/Driver/SnapshotFileSystem.cpp:30,1536012000:30,r
+lib/Core/ReexportFileWriter.cpp:20,1536012000:20,r
+lib/Core/JSONFile.cpp:20,1536012000:20,r
