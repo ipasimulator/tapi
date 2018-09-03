@@ -145,6 +145,10 @@ SnapshotFileSystem::openFileForRead(const Twine &path) {
 
   auto status = getFileStatus(path, *externalStatus);
   return std::unique_ptr<File>(
+      // [port] CHANGED: It was ambiguous.
+#if defined(TAPI_PORT)
+      llvm::
+#endif
       make_unique<FileWithFixedStatus>(std::move(*result2), status));
 }
 
