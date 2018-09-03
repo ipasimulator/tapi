@@ -149,6 +149,11 @@ template <> struct MappingTraits<const ExtendedInterfaceFile *> {
           }
         }
 
+        // [port] CHANGED: See [sort].
+#if defined(TAPI_PORT)
+        using TAPI_INTERNAL::sort;
+#endif
+
         sort(section.symbols);
         sort(section.classes);
         sort(section.classEHs);

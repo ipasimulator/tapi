@@ -128,6 +128,12 @@ template <> struct MappingTraits<const InterfaceFile *> {
             break;
           }
         }
+
+        // [port] CHANGED: See [sort].
+#if defined(TAPI_PORT)
+        using TAPI_INTERNAL::sort;
+#endif
+
         sort(section.symbols);
         sort(section.classes);
         sort(section.ivars);
