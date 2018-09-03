@@ -309,10 +309,20 @@ static Error readObjectiveCMetadata(MachOObjectFile *object,
   auto H = object->getHeader();
   auto arch = getArchType(H.cputype, H.cpusubtype);
 
+  // [port] CHANGED: `MachOMetadata` is not taking `llvm::Error` (anymore?).
+#if !defined(TAPI_PORT)
   auto error = Error::success();
-  MachOMetadata metadata(object, error);
+#endif
+  MachOMetadata metadata(object
+#if !defined(TAPI_PORT)
+                         ,
+                         error
+#endif
+  );
+#if !defined(TAPI_PORT)
   if (error)
     return std::move(error);
+#endif
 
   ///
   /// Classes
@@ -352,22 +362,36 @@ static Error readObjectiveCMetadata(MachOObjectFile *object,
       if (!name)
         return name.takeError();
 
+      // [port] CHANGED: See [no-dynamic].
+#if !defined(TAPI_PORT)
       auto isDynamic = property.isDynamic();
       if (!isDynamic)
         return isDynamic.takeError();
+#endif
 
       auto setter = property.getSetter();
       if (!setter)
         return setter.takeError();
       if (!setter->empty())
         file->addObjCSelector(objcClass, *setter, arch,
-                              /*isInstanceMethod=*/true, *isDynamic, access);
+                              /*isInstanceMethod=*/true,
+#if !defined(TAPI_PORT)
+                              *isDynamic,
+#else
+                              /*isDynamic=*/false,
+#endif
+                              access);
 
       auto getter = property.getGetter();
       if (!getter)
         return getter.takeError();
       file->addObjCSelector(objcClass, *getter, arch, /*isInstanceMethod=*/true,
-                            *isDynamic, access);
+#if !defined(TAPI_PORT)
+                            *isDynamic,
+#else
+                            /*isDynamic=*/false,
+#endif
+                            access);
     }
 
     auto classMethods = objcClassMeta->classMethods();
@@ -432,22 +456,37 @@ static Error readObjectiveCMetadata(MachOObjectFile *object,
       if (!name)
         return name.takeError();
 
+      // [port] CHANGED: See [no-dynamic].
+#if !defined(TAPI_PORT)
       auto isDynamic = property.isDynamic();
       if (!isDynamic)
         return isDynamic.takeError();
+#endif
 
       auto setter = property.getSetter();
       if (!setter)
         return setter.takeError();
       if (!setter->empty())
         file->addObjCSelector(objcCategory, *setter, arch,
-                              /*isInstanceMethod=*/true, *isDynamic, access);
+                              /*isInstanceMethod=*/true,
+#if !defined(TAPI_PORT)
+                              *isDynamic,
+#else
+                              /*isDynamic=*/false,
+#endif
+                              access);
 
       auto getter = property.getGetter();
       if (!getter)
         return getter.takeError();
       file->addObjCSelector(objcCategory, *getter, arch,
-                            /*isInstanceMethod=*/true, *isDynamic, access);
+                            /*isInstanceMethod=*/true,
+#if !defined(TAPI_PORT)
+                            *isDynamic,
+#else
+                            /*isDynamic=*/false,
+#endif
+                            access);
     }
 
     auto classMethods = category->classMethods();
@@ -506,22 +545,35 @@ static Error readObjectiveCMetadata(MachOObjectFile *object,
       if (!name)
         return name.takeError();
 
+      // [port] CHANGED: See [no-dynamic].
+#if !defined(TAPI_PORT)
       auto isDynamic = property.isDynamic();
       if (!isDynamic)
         return isDynamic.takeError();
+#endif
 
       auto setter = property.getSetter();
       if (!setter)
         return setter.takeError();
       if (!setter->empty())
         file->addObjCSelector(objcProtocol, *setter, arch,
-                              /*isInstanceMethod=*/true, *isDynamic);
+                              /*isInstanceMethod=*/true
+#if !defined(TAPI_PORT)
+                              ,
+                              *isDynamic
+#endif
+        );
 
       auto getter = property.getGetter();
       if (!getter)
         return getter.takeError();
       file->addObjCSelector(objcProtocol, *getter, arch,
-                            /*isInstanceMethod=*/true, *isDynamic);
+                            /*isInstanceMethod=*/true
+#if !defined(TAPI_PORT)
+                            ,
+                            *isDynamic
+#endif
+      );
     }
 
     auto classMethods = protocol->classMethods();
