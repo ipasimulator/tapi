@@ -22,3 +22,9 @@
 #==============================================================================#
 # Sphinx build files.
 docs/_build
+
+# [port] CHANGED: Added. See [gtm].
+/.gtm/
+
+# [port] CHANGED: Added. It contains CMake build files.
+/build/

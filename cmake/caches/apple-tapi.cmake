@@ -24,10 +24,13 @@ set(LLVM_BUILD_RUNTIME OFF CACHE BOOL "")
 set(CLANG_ENABLE_ARCMT OFF CACHE BOOL "")
 set(CLANG_ENABLE_STATIC_ANALYZER OFF CACHE BOOL "")
 
-set(LLVM_ENABLE_LTO ON CACHE BOOL "")
+# [port] CHANGED: `ON` -> `OFF`. Not working with MSVC linker.
+# [port] TODO: Use `lld-link` then.
+set(LLVM_ENABLE_LTO OFF CACHE BOOL "")
 set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "")
-set(CMAKE_C_FLAGS   "-Wno-unknown-warning-option -Werror=unguarded-availability-new" CACHE STRING "")
-set(CMAKE_CXX_FLAGS "-Wno-unknown-warning-option -Werror=unguarded-availability-new" CACHE STRING "")
+# [port] CHANGED: Commented out. These options are not available when using MSVC compiler.
+#set(CMAKE_C_FLAGS   "-Wno-unknown-warning-option -Werror=unguarded-availability-new" CACHE STRING "")
+#set(CMAKE_CXX_FLAGS "-Wno-unknown-warning-option -Werror=unguarded-availability-new" CACHE STRING "")
 set(CMAKE_C_FLAGS_DEBUG            "-O0 -g"              CACHE STRING "")
 set(CMAKE_CXX_FLAGS_DEBUG          "-O0 -g"              CACHE STRING "")
 set(CMAKE_C_FLAGS_RELEASE          "-Os    -DNDEBUG"     CACHE STRING "")
