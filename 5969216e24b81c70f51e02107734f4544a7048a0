@@ -1,0 +1,13 @@
+[ver:1,total:1320]
+lib/Core/TextStub_v2.cpp:366,1536015600:306,1536040800:60,r
+lib/Core/XPI.cpp:260,1536015600:260,r
+include/tapi/Core/ArchitectureConfig.h:240,1536040800:240,m
+lib/Core/InterfaceFileManager.cpp:140,1536015600:120,1536040800:20,r
+lib/Core/Architecture.cpp:140,1536040800:140,r
+lib/Core/Registry.cpp:50,1536015600:50,r
+include/tapi/Core/ArchitectureSet.h:30,1536015600:30,r
+lib/Core/YAMLReaderWriter.cpp:28,1536015600:28,r
+include/tapi/Version.inc:20,1536015600:20,r
+include/tapi/Core/InterfaceFileBase.h:20,1536040800:20,r
+lib/Driver/SnapshotFileSystem.cpp:20,1536015600:20,r
+lib/Core/TextStub_v1.cpp:6,1536015600:6,r
