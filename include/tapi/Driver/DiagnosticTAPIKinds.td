@@ -7,6 +7,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+// [port] CHANGED: Added this include.
+include "clang/Basic/Diagnostic.td" // for `TextSubstitution`
+
 // Define the diagnostic severities.
 class Severity<string N> {
   string Name = N;
