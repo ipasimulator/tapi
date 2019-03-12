@@ -7,8 +7,16 @@
 //
 //===----------------------------------------------------------------------===//
 
-// [port] CHANGED: Added this include.
-include "clang/Basic/Diagnostic.td" // for `TextSubstitution`
+// [port] CHANGED: Added this class (copied from Clang's `Diagnostic.td`).
+// [port] `clang-tblgen` complained otherwise.
+// Textual substitutions which may be performed on the text of diagnostics
+class TextSubstitution<string Text> {
+  string Substitution = Text;
+  // TODO: These are only here to allow substitutions to be declared inline with
+  // diagnostics
+  string Component = "";
+  string CategoryName = "";
+}
 
 // Define the diagnostic severities.
 class Severity<string N> {

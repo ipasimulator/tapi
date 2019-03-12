@@ -21,8 +21,9 @@
 #include "tapi/LinkerInterfaceFile.h"
 #include "tapi/PackedVersion32.h"
 #include "tapi/tapi.h"
-#include "clang/Basic/VersionTuple.h"
 #include "llvm/ADT/StringRef.h"
+// [port] CHANGED: `clang/Basic` -> `llvm/Support`.
+#include "llvm/Support/VersionTuple.h"
 #include "llvm/Support/raw_ostream.h"
 #include <utility>
 
@@ -39,7 +40,8 @@ struct PackedVersion {
   constexpr PackedVersion(uint32_t version) : _version(version) {}
   PackedVersion(unsigned major, unsigned minor, unsigned subminor)
       : _version((major << 16) | ((minor & 0xff) << 8) | (subminor & 0xff)) {}
-  PackedVersion(clang::VersionTuple version) {
+  // [port] CHANGED: `clang` -> `llvm`.
+  PackedVersion(llvm::VersionTuple version) {
     _version = version.getMajor() << 16;
     if (auto minor = version.getMinor())
       _version |= (*minor & 0xff) << 8;
