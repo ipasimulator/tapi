@@ -1,0 +1,4 @@
+[ver:1,total:900]
+include/tapi/Driver/DiagnosticTAPIKinds.td:600,1552345200:240,1552381200:60,1552384800:300,m
+include/tapi/Core/ArchitectureSupport.h:240,1552384800:240,m
+include/tapi/Driver/TAPIOptions.td:60,1552381200:60,r
